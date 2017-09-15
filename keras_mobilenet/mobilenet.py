@@ -4,7 +4,7 @@ from keras.layers import Input, Convolution2D, \
     GlobalAveragePooling2D, Dense, BatchNormalization, Activation
 from keras.models import Model
 from keras.engine.topology import get_source_inputs
-from depthwise_conv2d import DepthwiseConvolution2D
+from .depthwise_conv2d import DepthwiseConvolution2D
 
 '''Google MobileNet model for Keras.
 # Reference:
@@ -40,7 +40,7 @@ def MobileNet(input_tensor=None, input_shape=None, alpha=1, shallow=False, class
                                       default_size=224,
                                       min_size=96,
                                       data_format=K.image_data_format(),
-                                      include_top=True)
+                                      require_flatten=True)
 
     if input_tensor is None:
         img_input = Input(shape=input_shape)
@@ -134,4 +134,4 @@ def MobileNet(input_tensor=None, input_shape=None, alpha=1, shallow=False, class
 
 if __name__ == '__main__':
     m = MobileNet()
-    print "model ready"
+    print("model ready")
